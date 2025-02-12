@@ -1,0 +1,7 @@
+{
+    "broker" : "",
+    "port" : 0,
+    "username": "",
+    "password": "",
+    "timeSend" : 1000
+}
