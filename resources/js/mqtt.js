@@ -39,7 +39,7 @@ function handleBtn()
             "power": "on"
         };
         let topic = "mozanio/" + pair_key + "/power"
-        client.publish(topic, "on");
+        client.publish(topic, myJsonObj);
         // if (!err) {
         // }
     })
@@ -50,7 +50,7 @@ function handleBtn()
             "power": "off"
         };
         let topic = "mozanio/" + pair_key + "/power"
-        client.publish(topic, "off");
+        client.publish(topic, myJsonObj);
     })
     let data_btn_control = document.getElementsByClassName("btn-control-param-machine");
     let i = 0;
