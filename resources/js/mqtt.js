@@ -1,7 +1,7 @@
 // const mqtt = require("mqtt");
 // const client = mqtt.connect("mqtt://broker.emqx.io");
 
-const broker = "ws://broker.emqx.io:8083/mqtt"; // WebSocket version
+const broker = "wss://broker.emqx.io:8084/mqtt"; // WebSocket version
 const client = mqtt.connect(broker);
 // client.on("connect", () => {
 // console.log("Connected to MQTT Broker");
