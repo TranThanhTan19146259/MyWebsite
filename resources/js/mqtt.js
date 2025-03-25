@@ -34,6 +34,10 @@ function handleBtn()
     let pair_key;
     on_off_btn[0].addEventListener('click', event =>{
         console.log("On")
+        let myJsonObj;
+        myJsonObj = {
+            "power": "on"
+        };
         let topic = "mozanio/" + pair_key + "/power"
         client.publish(topic, "on");
         // if (!err) {
@@ -41,6 +45,10 @@ function handleBtn()
     })
     on_off_btn[1].addEventListener('click', event =>{
         console.log("Off")
+        let myJsonObj;
+        myJsonObj = {
+            "power": "off"
+        };
         let topic = "mozanio/" + pair_key + "/power"
         client.publish(topic, "off");
     })
