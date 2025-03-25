@@ -10,101 +10,69 @@
     <script src="resources/js/nwConf.js"></script>
     <script src="resources/js/settingConf.js"></script>
     <script src="resources/js/mpuConf.js"></script>
-    <!-- <script src="resources/js/alarm.js"></script> -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script src="resources/js/mqtt.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <!-- <script src="resources/js/alarm.js"></script> -->
 
 </head>
 
 <body onload="generatePage();">
+    <!-- <script src="app.js"></script> -->
     <div class="topnav">
         <h2>MOZANIO WEB TEST</h2>
         <div class="line1"></div>
         <div class="topnav-right">
-            <li><a class="select-tab active" href="#Settings">Settings</a></li>
-            <li><a class="select-tab" href="#Network">Network Config</a></li>
+            <li><a class="select-tab active" href="#Settings">Control</a></li>
+            <!-- <li><a class="select-tab" href="#Network">Network Config</a></li>
             <li><a class="select-tab" href="#MPU">Vibration Config</a></li>
-            <li><a class="select-tab" href="#Alarm">Alarm Config</a></li>
+            <li><a class="select-tab" href="#Alarm">Alarm Config</a></li> -->
         </div>
     </div><br>
     <!---------------------------- SETTINGS TAB ------------------------->
         <div class="main-content active-content">
-            <div  style="font-size: 30px; text-align:center; margin: auto;">DEVICE SETTINGS</div>
-            <br>
-            <div style="font-size: 25px; text-align:center;" class="wifi-config active-content"><b>AP MODE</b><br>
-                <table style="font-size: 20px; margin: auto;" border="0">
-                    <tr style="height: 5px;"></tr>
-                    <tr>
-                        <td></td>
-                        <td style="text-align: left; font-size: 15px;"> <i> <b> SSID:</b></i></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td align="left"><input  type="text" class="settings-tab-input-ap" ></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="text-align: left; font-size: 15px;"> <i><b>Password:</b></i></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td align="left"><input  type="password" class="settings-tab-input-ap"></td>
-
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="text-align: left; font-size: 15px;"> <i><b>Confirm Password:</b></i> </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td align="left"><input type="password" class="settings-tab-input-ap"></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div style="font-size: 25px; text-align:center;" class="wifi-config"><b>STA MODE</b><br>
-                <table style="font-size: 20px; margin: auto;" border="0">
-                    <tr style="height: 5px;"></tr>
-                    <tr>
-                        <td></td>
-                        <td style="text-align: left; font-size: 15px;"> <i> <b> SSID:</b></i></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td align="left"><input  type="text" class="settings-tab-input-sta" ></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="text-align: left; font-size: 15px;"> <i><b>Password:</b></i></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td align="left"><input  type="password" class="settings-tab-input-sta"></td>
-
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td style="text-align: left; font-size: 15px;"> <i><b>Confirm Password:</b></i> </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td align="left"><input type="password" class="settings-tab-input-sta"></td>
-                    </tr>
-                    
-                </table>
-            </div>
-            <br>
-            <div align= "center">
-                <label   class="switch">
-                    <input class="slider" type="checkbox">
-                    <span  class="slider"></span>
-                </label><br><br>
-                <button onclick="send_data_settings_config();">Submit</button> <br> <br>
-                <button onclick="reset_device();">Reset</button>
-
+            <div class="container mt-4 ">
+                <h4 class="mb-3 text-center">Input Fields with Send Buttons</h4>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Input + Button Group -->
+                        <div style="margin-left: 50%;" class=" input-group mb-4">
+                            <input type="text" class="form-control control control-param" placeholder="Enter pairkey">
+                            <button class="btn btn-primary btn-control-param-machine">Set</button>
+                        </div>
+                        
+                        <div style="margin-left: 50%;" class="input-group mb-4">
+                            <input type="text" class="form-control control control-param" placeholder="Enter temp boiler 1">
+                            <button class="btn btn-primary btn-control-param-machine">Send</button>
+                        </div>
+            
+                        <div style="margin-left: 50%;" class="input-group mb-4">
+                            <input type="text" class="form-control control control-param" placeholder="Enter temp boiler 2">
+                            <button class="btn btn-primary btn-control-param-machine">Send</button>
+                        </div>
+            
+                        <div class="d-flex justify-content-end mt-3">
+                            <button class="btn btn-success btn-control-machine me-2">On</button>
+                            <button style="margin-right: -12%;" class="btn btn-danger btn-control-machine">Off</button>
+                        </div>
+            
+                        <!-- <div style="margin-left: 50%;" class="input-group mb-4">
+                            <input type="text" class="form-control control" placeholder="Enter data 5">
+                            <button class="btn btn-primary">Send</button>
+                        </div>
+            
+                        <div style="margin-left: 50%;" class="input-group mb-4">
+                            <input type="text" class="form-control control" placeholder="Enter data 6">
+                            <button class="btn btn-primary">Send</button>
+                        </div> -->
+                    </div>
+                </div>
             </div>
             
         </div>
         <!---------------------------- NETWORK TAB ------------------------->
-        <div class="main-content " >
+        <!-- <div class="main-content " >
             <div  style="font-size: 30px; text-align:center; margin: auto;">NETWORK CONFIG</div><br><br>
             <div class="row">
                 <div class="col">
@@ -117,18 +85,11 @@
                             <td><input type="radio" class="radio-select-protocol" name="radio" value="MQTT" ></td> 
                             <td > <label for="MQTT"><b >MQTT</b></label> </td> 
                         </tr>
-                        <!-- <tr style="height: 40px;">
-                            <td><input type="radio" class="radio-select-protocol" name="radio" value="WS"></td> 
-                            <td ><label for="WS"><b >WS</b></label> </td> 
-                        </tr> -->
                     </table>
                 </div>
                 <div>
                     <table class="protocol-select active-content" align="center" border="0"> 
                         <tr><td align="center"><b>HTTP</b></td></tr>
-                        <!-- <tr>
-                            <td align="right"><span class="dot"></span><label> Conected</label></td>
-                        </tr> -->
                         <tr>
                             <td style="text-align: left; font-size: 15px;"> <i><b>Server Name:</b></i></td>
                         </tr>
@@ -144,9 +105,6 @@
                     </table>
                     <table class="protocol-select " align="center" border="0"> 
                         <tr><td align="center"><b>MQTT</b></td></tr>
-                        <!-- <tr>
-                            <td align="right"><span class="dot"></span><label> Conected</label></td>
-                        </tr> -->
                         <tr>
                             <td style="text-align: left; font-size: 15px;"> <i><b>Broker Name:</b></i></td>
                         </tr>
@@ -177,50 +135,23 @@
                         <tr>
                             <td align="left"><input  type="text" class="protocol-input" ></td>
                         </tr>
-                        <!-- <tr>
-                            <td align="left"><input  type="text" class="protocol-input" ></td>
-                        </tr>
-                        <tr>
-                            <td align="left"><input  type="text" class="protocol-input" ></td>
-                        </tr> -->
                     </table>
-                    <!-- <table class="protocol-select " align="center" border="0"> 
-                        <tr><td align="center"><b>WS</b></td></tr>
-                        <tr>
-                            <td align="right"><span class="dot"></span><label> Conected</label></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; font-size: 15px;"> <i><b>Server WS Name:</b></i></td>
-                        </tr>
-                        <tr>
-                            <td align="left"><input  type="text" class="protocol-input" ></td>
-                        </tr>
-                    </table> -->
                 </div>
             </div><br><br><br>
             <p align = "center">
                 <button onclick="send_data_network_config();">Submit</button>
             </p>
         </div>
-        
+         -->
         <!---------------------------- MPU TAB ------------------------->
-        <div class="main-content">
+        <!-- <div class="main-content">
             <div style="font-size: 30px; text-align:center;">VIBRATION CONFIG</div>
             <br>
             <table style="font-size: 20px; margin: auto;" border="0">
                 <tr>
                     <th>Vibration parameters</th>
-                    <!-- <th>Pos 1</th> -->
-                    <!-- <td></td>
-                    <th>Pos 2</th> -->
                 </tr>
-                <!-- <tr></tr> -->
-                <!-- <tr></tr> -->
                 <tr>
-                    <!-- <td></td> -->
-                    <!-- <th>[MPU6050 0x69]</th> -->
-                    <!-- <td></td> -->
-                    <!-- <th>[MPU6050 0x69]</th> -->
                     
                 </tr>
                 <tr style="height: 10px;"></tr>
@@ -237,17 +168,6 @@
                         </span>
                     </td>
                     <td style="width: 30px;"></td>
-                    <!-- <td>
-                        Gyro Scale
-                        <span>
-                            <select class="MPU-tab-input">
-                                <option value="0">±250°/s</option>
-                                <option value="1">±500°/s</option>
-                                <option value="2">±1000°/s</option>
-                                <option value="3">±2000°/s</option>
-                            </select>
-                        </span>
-                    </td> -->
                 </tr>
                 <tr style="height: 10px;"></tr>
                 <tr>
@@ -263,17 +183,6 @@
                         </span>
                     </td>
                     <td style="width: 30px;"></td>
-                    <!-- <td align="right">
-                        Accel Scale
-                        <span>
-                            <select class="MPU-tab-input" style="width: 76px;">
-                                <option value="0">±2g</option>
-                                <option value="1">±4g</option>
-                                <option value="2">±6g</option>
-                                <option value="3">±8g</option>
-                            </select>
-                        </span>
-                    </td> -->
                 <tr>
                 <tr style="height: 10px;"></tr>
                 <tr>
@@ -283,42 +192,14 @@
                             <input class="MPU-tab-input" style="width: 40px; "> uS
                         </span>
                     </td align="right">
-                    <!-- <td style="width: 30px;"></td>
-                    <td >
-                        Sample Rate
-                        <span >
-                            <input class="MPU-tab-input" style="width: 40px; "> uS
-                        </span>
-                    </td>
-                <tr> -->
-                <!-- <tr>
-                    <td align="right">
-                        Time Send 
-                        <span >
-                            <input class="MPU-tab-input" style="width: 40px; "> mS
-                        </span>
-                    </td>
-                    <td style="width: 30px;"></td>
-                    <td align="right">
-                        Time Send
-                        <span >
-                            <input class="MPU-tab-input" style="width: 40px; "> mS
-                        </span>
-                    </td> -->
-                <!-- </tr> -->
                 <tr style="height: 10px;"></tr>
-                    <!-- <td></td> -->
                     <td align="center">
                         <button onclick="send_data_mpu_config_1();">Submit</button>
                     </td>
-                    <!-- <td></td> -->
-                    <!-- <td align="center">
-                        <button onclick="send_data_mpu_config_2();">Submit</button>
-                    </td> -->
                 </tr>
             </table>
-        </div>  
-        <div class="main-content">
+        </div>   -->
+        <!-- <div class="main-content">
             <div style="font-size: 25px; text-align:center;" class="wifi-config active-content"><b>ALARM SETTINGS</b><br>
                 <table style="font-size: 20px; margin: auto;" border="0">
                     <tr style="height: 5px;"></tr>
@@ -373,19 +254,10 @@
                     <td align="center">
                         <button onclick="send_data_alarm_config();">Submit</button>
                     </td>
-                    <!-- <td></td> -->
-                    <!-- <td align="center">
-                        <button onclick="send_data_mpu_config_2();">Submit</button>
-                    </td> -->
                 </tr>
                 </table>
             </div>
-            <!-- <div style="text-align:center;">CAN CONFIG</div>
-            <div style="text-align:center;">CAN CONFIG</div>
-            <div style="text-align:center;">CAN CONFIG</div>
-            <div style="text-align:center;">CAN CONFIG</div>
-            <div style="text-align:center;">CAN CONFIG</div> -->
-        </div>
+        </div> -->
 
     </div>
 </body>

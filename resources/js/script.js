@@ -2,11 +2,13 @@ function generatePage()
 {
     // console.log(baseUrl)
     // alert('test!!!');
-    change_protocol_mode();
-    change_wifi_mode();
+    // change_protocol_mode();
+    // change_wifi_mode();
     generate_content();
-    get_data_mpu();
-    get_data_alarm_config();
+    // get_data_mpu();
+    // get_data_alarm_config();
+    connectToMqttServer();
+    handleBtn();
 }
 
 function reset_device()
