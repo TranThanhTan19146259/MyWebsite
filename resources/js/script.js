@@ -9,7 +9,11 @@ function generatePage()
     // get_data_alarm_config();
     // connectToMqttServer();
     handleBtn();
+    let checkbox_control = document.getElementsByClassName("checkbox-control-machine")
+    checkbox_control[0].checked = true;
+    checkbox_control[1].checked = true;
 }
+
 
 function reset_device()
 {

@@ -94,7 +94,8 @@ let subTopic;
 // // console.log(parsedData.pwr);
 //     // client.end();
 // });
-
+let first_get_enb_boiler = 0;
+let boiler1_enb = true, boiler2_enb = true;
 function connectToMqttServer()
 {
     client = mqtt.connect(broker);
@@ -185,6 +186,15 @@ function connectToMqttServer()
             dev_status[7].innerHTML = msg_data.t_sp
             dev_status[8].innerHTML = msg_data.t_pv2
             dev_status[9].innerHTML = msg_data.t_sp2
+            // if(first_get_enb_boiler == 0)
+            // {
+            //     let checkbox_control = document.getElementsByClassName("checkbox-control-machine")
+            //     checkbox_control[0].checked = (msg_data.boiler_enb & 0x02) >> 1;
+            //     checkbox_control[1].checked = (msg_data.boiler_enb & 0x04) >> 2;
+            //     boiler1_enb = checkbox_control[0].checked;
+            //     boiler2_enb = checkbox_control[1].checked;
+            // }
+            // first_get_enb_boiler = 1;
         }
         if(topic == "errorList")
         {
@@ -197,7 +207,6 @@ function connectToMqttServer()
     });
         
 }
-let boiler1_enb = false, boiler2_enb = false;
 
 function handleBtn()
 {
@@ -265,7 +274,7 @@ function handleBtn()
     let checkbox_control = document.getElementsByClassName("checkbox-control-machine")
     checkbox_control[0].addEventListener('change', event=>{
         boiler1_enb = ! boiler1_enb;
-        let data_enb_boiler = (boiler2_enb << 1) + boiler1_enb;
+        let data_enb_boiler = (boiler2_enb << 2) + (boiler1_enb << 1);
         // console.log(data_enb_boiler);
         let myJsonObj;
         myJsonObj = {
@@ -276,7 +285,7 @@ function handleBtn()
     })
     checkbox_control[1].addEventListener('change', event=>{
         boiler2_enb = ! boiler2_enb;
-        let data_enb_boiler = (boiler2_enb << 1) + boiler1_enb;
+        let data_enb_boiler = (boiler2_enb << 2) + (boiler1_enb << 1);
         // console.log(data_enb_boiler);
         let myJsonObj;
         myJsonObj = {
