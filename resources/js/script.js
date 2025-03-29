@@ -7,7 +7,7 @@ function generatePage()
     generate_content();
     // get_data_mpu();
     // get_data_alarm_config();
-    connectToMqttServer();
+    // connectToMqttServer();
     handleBtn();
 }
 
