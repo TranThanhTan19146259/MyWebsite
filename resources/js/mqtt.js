@@ -171,7 +171,7 @@ function connectToMqttServer()
                 dev_status[3].style.color = "green"
     
             }
-            if(msg_data.tempS == state_change_color)
+            if(msg_data.heat == state_change_color)
             {
                 dev_status[5].style.color = "red"
             }
