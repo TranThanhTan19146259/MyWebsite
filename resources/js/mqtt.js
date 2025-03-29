@@ -96,6 +96,7 @@ let subTopic;
 // });
 let first_get_enb_boiler = 0;
 let boiler1_enb = true, boiler2_enb = true;
+let has_error = 0;
 function connectToMqttServer()
 {
     client = mqtt.connect(broker);
@@ -186,19 +187,48 @@ function connectToMqttServer()
             dev_status[7].innerHTML = msg_data.t_sp
             dev_status[8].innerHTML = msg_data.t_pv2
             dev_status[9].innerHTML = msg_data.t_sp2
-            // if(first_get_enb_boiler == 0)
-            // {
-            //     let checkbox_control = document.getElementsByClassName("checkbox-control-machine")
-            //     checkbox_control[0].checked = (msg_data.boiler_enb & 0x02) >> 1;
-            //     checkbox_control[1].checked = (msg_data.boiler_enb & 0x04) >> 2;
-            //     boiler1_enb = checkbox_control[0].checked;
-            //     boiler2_enb = checkbox_control[1].checked;
-            // }
-            // first_get_enb_boiler = 1;
+            let dev_info = document.getElementsByClassName("dev-info-display");
+            if(first_get_enb_boiler == 0)
+            {
+                let myJsonObj;
+                myJsonObj = {
+                        "boiler_enb": 6
+                    };
+                let topic = "mozanio/web_to_dev/" + pair_key + "/boiler_enb"
+                client.publish(topic, JSON.stringify(myJsonObj));
+                dev_info[3].src = `https://www.google.com/maps?q=${msg_data.map}&output=embed`
+
+            }
+            first_get_enb_boiler = 1;
+
+            dev_info[0].innerHTML = msg_data.IP;
+            dev_info[1].innerHTML = msg_data.ssid;
+            dev_info[2].innerHTML = msg_data.pairKey;
+            // dev_info[3].innerHTML = msg_data.map;
+
         }
-        if(topic == "errorList")
+        if(topic[3] == "errorList")
         {
-    
+            const errorValues = msg_str
+                .trim()
+                .split("\n")
+                .map(line => Number(line.split(": ")[1])) // Extract numbers
+                .filter(value => value !== 0); // Keep only non-zero values
+
+                // Output results
+                console.log(errorValues);
+                if(errorValues.length != 0)
+                {
+                    if(has_error == 0)
+                    {
+                        alert(`Error found:  ${errorValues[0]}`);
+                        has_error = 1;
+                    }
+                }
+                else
+                {
+                    has_error = 0;
+                }
         }
     // Output the result
     // console.log(parsedData);

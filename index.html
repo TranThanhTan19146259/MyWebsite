@@ -26,6 +26,7 @@
         <div class="topnav-right">
             <li><a class="select-tab active" href="#Settings">Control</a></li>
             <li><a class="select-tab" href="#Status">Status</a></li>
+            <li><a class="select-tab" href="#Info">Info</a></li>
             <!-- <li><a class="select-tab" href="#Network">Network Config</a></li>
             <li><a class="select-tab" href="#MPU">Vibration Config</a></li>
             <li><a class="select-tab" href="#Alarm">Alarm Config</a></li> -->
@@ -81,7 +82,7 @@
             
         </div>
         <!---------------------------- NETWORK TAB ------------------------->
-        <div class="main-content ">
+        <div class="main-content">
             <div class="container col-md-6 mt-4 ">
             <h4 id="device-id" class="mb-3 text-center">Thiết bị</h4>
                 <div class="input-group mb-4">
@@ -142,7 +143,38 @@
                 </div>
             </div>
         </div>
-        
+        <div class="main-content">
+            <div class="container col-md-6 mt-4 ">
+                <h4 class="mb-3 text-center">Info</h4>
+            </div>
+            <div class="input-group mb-4">
+                <label type="text" class="text-center form-control control">IP </label>
+                <label type="text" class="text-center form-control control dev-info-display">undefined</label>
+            </div>
+            <div class="input-group mb-4">
+                <label type="text" class="text-center form-control control">SSID </label>
+                <label type="text" class="text-center form-control control dev-info-display">undefined</label>
+            </div>
+            <div class="input-group mb-4">
+                <label type="text" class="text-center form-control control">Pair Key </label>
+                <label type="text" class="text-center form-control control dev-info-display">undefined</label>
+            </div>
+            <!-- <div class="input-group mb-4">
+                <label type="text" class="text-center form-control control">Map </label>
+                <label type="text" class="text-center form-control control dev-info-display">undefined</label>
+            </div> -->
+            <h2>Location</h2>
+            <div class="input-group mb-4">
+                <iframe 
+                    width="600%"
+                    height="600px"
+                    class="dev-info-display text-center"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
         <!---------------------------- MPU TAB ------------------------->
         <!-- <div class="main-content">
             <div style="font-size: 30px; text-align:center;">VIBRATION CONFIG</div>
