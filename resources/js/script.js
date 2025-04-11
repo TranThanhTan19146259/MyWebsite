@@ -9,10 +9,14 @@ function generatePage()
     // get_data_alarm_config();
     // connectToMqttServer();
     handleBtn();
+    handle_test_manual();
+    handle_schedule_buttons();
+    // handle_history_schedule();
     let checkbox_control = document.getElementsByClassName("checkbox-control-machine")
     checkbox_control[0].checked = true;
     checkbox_control[1].checked = true;
 }
+
 
 
 function reset_device()

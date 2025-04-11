@@ -14,6 +14,8 @@
     <script src="resources/js/mqtt.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-5/6.2.10/css/tempus-dominus.min.css">
+
             <!-- <script src="resources/js/alarm.js"></script> -->
 
 </head>
@@ -27,13 +29,15 @@
             <li><a class="select-tab active" href="#Settings">Control</a></li>
             <li><a class="select-tab" href="#Status">Status</a></li>
             <li><a class="select-tab" href="#Info">Info</a></li>
+            <li><a class="select-tab" href="#Manual">Manual</a></li>
+            <li><a class="select-tab" href="#Schedule">Schedule</a></li>
             <!-- <li><a class="select-tab" href="#Network">Network Config</a></li>
             <li><a class="select-tab" href="#MPU">Vibration Config</a></li>
             <li><a class="select-tab" href="#Alarm">Alarm Config</a></li> -->
         </div>
     </div><br>
     <!---------------------------- SETTINGS TAB ------------------------->
-        <div class="main-content  active-content">
+        <div class="main-content active-content">
             <div class="container col-md-6 mt-4 ">
                 <h4 class="mb-3 text-center">Control</h4>
                 
@@ -173,6 +177,179 @@
                     allowfullscreen
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
+            </div>
+        </div>
+        <div class="main-content ">
+            <h4 class="mb-3 text-center">Manual</h4>
+            <div class="mb-4 text-center">
+                <label class="text-center">Test Valve</label>
+                <button style="margin-left: 3.6%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-primary btn-test-manual">Test</button>
+                <label  type="text" class="control" style="margin-left: 2%; color: yellow;"><i class="fa-solid fa-circle status-test-manual"></i></label>
+            </div>
+            <div class="mb-4 text-center">
+                <label class="text-center">Test Bump</label>
+                <button style="margin-left: 3%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-primary btn-test-manual">Test</button>
+                <label  type="text" class="control" style="margin-left: 2%; color: yellow;"><i class="fa-solid fa-circle status-test-manual"></i></label>
+            </div>
+            <div class="mb-4 text-center">
+                <label class="text-center">Test Boiler1</label>
+                <button style="margin-left: 2%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-primary btn-test-manual">Test</button>
+                <label  type="text" class="control" style="margin-left: 2%; color: yellow;"><i class="fa-solid fa-circle status-test-manual"></i></label>
+            </div>
+            <div class="mb-4 text-center">
+                <label class="text-center">Test Boiler2</label>
+                <button style="margin-left: 2%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-primary btn-test-manual">Test</button>
+                <label  type="text" class="control" style="margin-left: 2%; color: yellow;"><i class="fa-solid fa-circle status-test-manual"></i></label>
+            </div>
+            
+        </div>
+        <div class="main-content ">
+            <h4 class="mb-3 text-center">Schedule</h4>
+            <div class="mb-4 text-center">
+                <table align="center">
+                    <tr>
+                        <td></td>
+                        <td><label><b>Start</label></td>
+                        <td><label><b>Stop</label></td>
+                    </tr>
+                    <tr>
+                        <td><label style="margin-left: 0%;" class="text-center"><b>Monday</label></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 10%; width: 90%;" class="form-control start-time-input"/></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 0%; width: 90%;" class="form-control stop-time-input"/></td>
+                        <td>
+                            <button style="margin-left: -50%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-success btn-set-schedule-on">Set</button>
+                        </td>
+                        <td>
+                            <button style="margin-left: -40%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .30rem; --bs-btn-font-size: .85rem;"class="btn btn-danger btn-set-schedule-off">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label style="margin-left: 0%;" class="text-center"><b>Tuesday</label></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 10%; width: 90%;" class="form-control start-time-input"/></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 0%; width: 90%;" class="form-control stop-time-input"/></td>
+                        <td>
+                            <button style="margin-left: -50%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-success btn-set-schedule-on">Set</button>
+                        </td>
+                        <td>
+                            <button style="margin-left: -40%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .30rem; --bs-btn-font-size: .85rem;"class="btn btn-danger btn-set-schedule-off">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label style="margin-left: 0%;" class="text-center"><b>Wednesday</label></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 10%; width: 90%;" class="form-control start-time-input"/></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 0%; width: 90%;" class="form-control stop-time-input"/></td>
+                        <td>
+                            <button style="margin-left: -50%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-success btn-set-schedule-on">Set</button>
+                        </td>
+                        <td>
+                            <button style="margin-left: -40%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .30rem; --bs-btn-font-size: .85rem;"class="btn btn-danger btn-set-schedule-off">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label style="margin-left: 0%;" class="text-center"><b>Thurday</label></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 10%; width: 90%;" class="form-control start-time-input"/></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 0%; width: 90%;" class="form-control stop-time-input"/></td>
+                        <td>
+                            <button style="margin-left: -50%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-success btn-set-schedule-on">Set</button>
+                        </td>
+                        <td>
+                            <button style="margin-left: -40%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .30rem; --bs-btn-font-size: .85rem;"class="btn btn-danger btn-set-schedule-off">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label style="margin-left: 0%;" class="text-center"><b>Friday</label></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 10%; width: 90%;" class="form-control start-time-input"/></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 0%; width: 90%;" class="form-control stop-time-input"/></td>
+                        <td>
+                            <button style="margin-left: -50%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-success btn-set-schedule-on">Set</button>
+                        </td>
+                        <td>
+                            <button style="margin-left: -40%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .30rem; --bs-btn-font-size: .85rem;"class="btn btn-danger btn-set-schedule-off">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label style="margin-left: 0%;" class="text-center"><b>Saturday</label></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 10%; width: 90%;" class="form-control start-time-input"/></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 0%; width: 90%;" class="form-control stop-time-input"/></td>
+                        <td>
+                            <button style="margin-left: -50%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-success btn-set-schedule-on">Set</button>
+                        </td>
+                        <td>
+                            <button style="margin-left: -40%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .30rem; --bs-btn-font-size: .85rem;"class="btn btn-danger btn-set-schedule-off">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label style="margin-left: 0%;" class="text-center"><b>Sunday</label></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 10%; width: 90%;" class="form-control start-time-input"/></td>
+                        <td><input type="time" value="00:00" style="text-align: center; margin-left: 0%; width: 90%;" class="form-control stop-time-input"/></td>
+                        <td>
+                            <button style="margin-left: -50%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-success btn-set-schedule-on">Set</button>
+                        </td>
+                        <td>
+                            <button style="margin-left: -40%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .30rem; --bs-btn-font-size: .85rem;"class="btn btn-danger btn-set-schedule-off">Delete</button>
+                        </td>
+                    </tr>
+                </table><br>
+                <h4 class="mb-3 text-center">History</h4>
+                <table align="center" id="history-schedule-table">
+                    <tr class="history-schedule-table-row">
+                        <td>
+                            <label for=""><b>Monday</label>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="history-schedule-table-row">
+                        <td>
+                            <label for=""><b>Tuesday</label>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="history-schedule-table-row">
+                        <td>
+                            <label for=""><b>Wednesday</label>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="history-schedule-table-row">
+                        <td>
+                            <label for=""><b>Thurday</label>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="history-schedule-table-row">
+                        <td>
+                            <label for=""><b>Friday</label>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="history-schedule-table-row">
+                        <td>
+                            <label for=""><b>Saturday</label>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="history-schedule-table-row">
+                        <td>
+                            <label for=""><b>Sunday</label>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <!-- <button style="margin-left: 2%; --bs-btn-padding-y: .15rem; --bs-btn-padding-x: .60rem; --bs-btn-font-size: .85rem;"class="btn btn-primary btn-test-manual">Test</button> -->
             </div>
         </div>
         <!---------------------------- MPU TAB ------------------------->
