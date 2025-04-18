@@ -61,7 +61,7 @@ function connectToMqttServer()
             let dev_status = document.getElementsByClassName("dev-value-display");
             let state_change_color = 0;
             // console.log(msg_data.rel)
-            if(msg_data.pid_clock == state_change_color)
+            if(msg_data.pwr == state_change_color)
             {
                 dev_status[0].style.color = "red"
             }
@@ -69,16 +69,15 @@ function connectToMqttServer()
             {
                 dev_status[0].style.color = "green"
             }
-            if(msg_data.rel == state_change_color)
+            if(msg_data.pid_clock == state_change_color)
             {
                 dev_status[1].style.color = "red"
             }
             else
             {
                 dev_status[1].style.color = "green"
-    
             }
-            if(msg_data.tempS == state_change_color)
+            if(msg_data.rel == state_change_color)
             {
                 dev_status[2].style.color = "red"
             }
@@ -87,7 +86,7 @@ function connectToMqttServer()
                 dev_status[2].style.color = "green"
     
             }
-            if(msg_data.bump_state == state_change_color)
+            if(msg_data.tempS == state_change_color)
             {
                 dev_status[3].style.color = "red"
             }
@@ -96,20 +95,29 @@ function connectToMqttServer()
                 dev_status[3].style.color = "green"
     
             }
-            if(msg_data.heat == state_change_color)
+            if(msg_data.bump_state == state_change_color)
             {
-                dev_status[5].style.color = "red"
+                dev_status[4].style.color = "red"
             }
             else
             {
-                dev_status[5].style.color = "green"
+                dev_status[4].style.color = "green"
     
             }
-            dev_status[4].innerHTML = msg_data.bump_val
-            dev_status[6].innerHTML = msg_data.t_pv
-            dev_status[7].innerHTML = msg_data.t_sp
-            dev_status[8].innerHTML = msg_data.t_pv2
-            dev_status[9].innerHTML = msg_data.t_sp2
+            if(msg_data.heat == state_change_color)
+            {
+                dev_status[6].style.color = "red"
+            }
+            else
+            {
+                dev_status[6].style.color = "green"
+    
+            }
+            dev_status[5].innerHTML = msg_data.bump_val
+            dev_status[7].innerHTML = msg_data.t_pv
+            dev_status[8].innerHTML = msg_data.t_sp
+            dev_status[9].innerHTML = msg_data.t_pv2
+            dev_status[10].innerHTML = msg_data.t_sp2
             let dev_info = document.getElementsByClassName("dev-info-display");
             if(first_get_enb_boiler == 0)
             {
